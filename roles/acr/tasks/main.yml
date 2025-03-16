@@ -8,7 +8,7 @@
 - name: Build and push webserver image to ACR
   containers.podman.podman_image:
     build:
-      path: "{{ playbook_dir }}/../../images/app-vm"  # Ajusta la ruta según tu estructura
+      path: "{{ playbook_dir }}C:\Users\marta\CasoPractico2\ansible\playbooks"
     name: "app-vm"
     tag: "CP2"
     push: yes
