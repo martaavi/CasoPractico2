@@ -1,0 +1,8 @@
+# Usa una imagen de Nginx
+FROM docker.io/nginx:alpine
+
+# Copia un archivo index.html
+COPY index.html /usr/share/nginx/html/index.html
+
+# Expone el puerto 80
+EXPOSE 80
