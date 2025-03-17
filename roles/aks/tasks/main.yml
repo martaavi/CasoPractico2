@@ -1,6 +1,7 @@
 ---
 - name: Crear el namespace en AKS
   k8s:
+    kubeconfig: "/home/martaavi/.kube/config"
     state: present
     definition:
       apiVersion: v1
