@@ -1,0 +1,31 @@
+---
+- name: Configurar VM con Podman
+  hosts: "20.160.108.76"
+  become: true
+  tasks:
+    - name: Actualizar repositorios apt
+      apt:
+        update_cache: yes
+
+    - name: Instalar Podman
+      apt: 
+        name: Podman
+        state: present
+
+    - name: Asegurarse de que Podman está instalado
+      command: podman --version
+      register: podman_version
+
+    - name: Mostrar versión de Podman instalada
+      debug:
+        msg: "Versión Podman: {{ podman_version.stdout }}"
+    
+- name: Mostrar la información del ACE en localhost
+  hosts: acr
+  gather_facts: false
+  tasks:
+    - name: Imprimir la variable acr_name
+      debug: 
+        msg: "El nombre de mi ACR es: {{ acr_name }}"
+     
+
