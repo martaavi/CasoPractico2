@@ -1,14 +1,14 @@
 ---
 - name: Login to ACR using Podman
   containers.podman.podman_login:
-    registry_url: "{{ acr_name }}.azurecr.io"
+    registry: "{{ acr_name }}.azurecr.io"
     username: "{{ acr_username }}"
     password: "{{ acr_password }}"
 
 - name: Build and push webserver image to ACR
-  containers.podman.podman_image:
-    build:
-      path: "/mnt/c/Users/marta/CasoPractico2/images/app-vm" 
-    name: "app-vm"
+  podman_image:
+    path: "/mnt/c/Users/marta/CasoPractico2/images/app-vm" 
+    name: "{{ acr_name }}.azurecr.io/app-vm"
     tag: "CP2"
     push: yes
+
