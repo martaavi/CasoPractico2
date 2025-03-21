@@ -10,7 +10,9 @@
         name: myappnamespace
 
 - name: Desplegar la aplicación en AKS
-  k8s:
+  community.kubernetes.k8s:
     state: present
-    definition: "{{ lookup('template', 'app_deployment.yml.j2') }}"
+    kubeconfig: "/home/martaavi/.kube/config"
+    context: "miAKS"
+    definition: "{{ lookup('template', role_path + '/templates/app_deployment.yml.j2') }}"
     namespace: myappnamespace
